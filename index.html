@@ -23,7 +23,7 @@
 
 
 </head>
-<body>
+<body onload="check()">
   <section class="cid-qIia8mgjVj mbr-fullscreen mbr-parallax-background" id="header2-0">
 
     <div class="container align-center">
@@ -99,7 +99,7 @@
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-2">
                     Till Jannah and Beyond</h3>
 				<h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-2">
-                    Insha Allah</h3>
+                    In Sha Allah</h3>
 
 
             </div>
@@ -187,24 +187,33 @@
                         </span>	
 						<div style = "padding-top: 25px;" id="countdown"></div>
 						<br><br>
-						<form method="POST" action="https://formspree.io/ranjithrogernx20@gmail.com">
-						<div>
-							<div class="form-group display-1">
-								<label for="exampleInputEmail1">Your message to the couple</label>
+						 <form id="gform" method="POST" class="pure-form pure-form-stacked" data-email="example@email.net"
+							action="https://script.google.com/macros/s/AKfycbx33unUT5EW86tsuzcReg6U3WUVRJQPqGGQlbhe/exec">
+							
+							<div class="form-group display-2">
+								<label for="exampleInputEmail1"><strong><span id="nick"></span></strong> drop your message to us</label>
 							</div>
-							<div class= "align-left">
-								<label for="name">Name</label>
+
+							<div style="display:none; " class="form-group">
+								<label for="name">Name: </label>
+								<input class="form-control" id="name" name="name" value="" />
 							</div>
-							<textarea class="form-control" name="name" placeholder="Your name" rows="1"></textarea>
-							<div class= "align-left">
-								<label for="message">Your message</label>
+
+							<div class="form-group">
+								<textarea class="form-control" id="message" name="message" rows="3" placeholder="Tell us"></textarea>
 							</div>
-							<textarea class="form-control" name="message" placeholder="Your message" rows="3"></textarea>
-							<br>
-							<button type="submut" class="btn btn-light">Submit</button>
-							<input type="hidden" name="_next" value="redirect.html" />
-							<input type="text" name="_gotcha" style="display:none" />
+
+
+							<button class="button-success pure-button button-xlarge">
+							<i class="fa fa-paper-plane"></i>&nbsp;Send</button>
 						</form>
+							
+						<div style="display:none; " id="thankyou_message" class="align-center">
+									<h1 class=" mbr-white display-2">
+									Thanks for your message <span id="nickn"></span> the honor of your presence is expected at our Nikkah</h1>
+						</div>
+						
+						
                     </div>
                 </div>
             </div>
@@ -213,6 +222,7 @@
 </section>
 
 
+  <script type="text/javascript" src="assets/js/form-submission-handler.js"></script>
   <script src="assets/web/assets/jquery/jquery.min.js"></script>
   <script src="assets/tether/tether.min.js"></script>
   <script src="assets/popper/popper.min.js"></script>
@@ -239,6 +249,25 @@
     $(window).load(function () {
       $('body').sakura();
     });
+  </script>
+  
+  <script>
+		function getQueryStringValue (key) {  
+			return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+		}  
+		//console.log(getQueryStringValue("name")); 
+   </script>
+  
+  <script>
+	function check() {
+		var map = new Object();
+		map["shivangi"] = { Name : "shivangi" , Nick : "Chotu," };
+		var queryparam = getQueryStringValue("name");
+		var value = map[queryparam];
+		document.getElementById("nick").innerHTML = value.Nick;
+		document.getElementById('name').value = value.Name;
+		document.getElementById("nickn").innerHTML = value.Nick;
+	}
   </script>
   
 
